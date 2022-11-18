@@ -15,8 +15,8 @@ function ProductPage({ product }) {
 
 export const getStaticPaths = async () => {
     const resData = await fetch(`http://easylens.vercel.app/api/products`)
-    const {data} = await resData.json();
-    const paths = data.map(product => ({
+    const products = await resData.json();
+    const paths = products.map(product => ({
         params : {
             productId : `${product.id}`
         }
@@ -32,9 +32,9 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps({ params }){
     const resData = await fetch(`http://easylens.vercel.app/api/products/${params.productId}`);
-    const {data} = await resData.json();
+    const product = await resData.json();
 
-    if(!data){
+    if(!product){
         return {
             notFound : true
         }
@@ -42,7 +42,7 @@ export async function getStaticProps({ params }){
 
     return {
         props : {
-            product : data[0]
+            product,
         }
     }
 }

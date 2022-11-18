@@ -38,11 +38,11 @@ function ProductsPage({products}) {
 
 export async function getServerSideProps(){
   const resData = await fetch("http://easylens.vercel.app/api/products");
-  const { data } = await resData.json();
+  const products = await resData.json();
 
   return {
       props : {
-        products : data
+        products,
       }
   }
 }
