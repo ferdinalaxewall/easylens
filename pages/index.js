@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
-import ProductCard from '../components/ProductCard';
+import SliderContent from '../components/SliderContent';
 import Layout from './Layout'
 
-export default function Home({data}) {
+export default function Home({products}) {
     const router = useRouter();
     const productClass = router.pathname === '/' && "produk__box"
   return (
@@ -69,14 +69,9 @@ export default function Home({data}) {
 
                 <a href="/products" id="lihat-produk" data-scroll="show">Lihat Semua Produk</a>
             </div>
-            <div className="produk__content owl-carousel owl-theme">
-                { data.slice(0, 3).map(product => {
-                    const { id, name, category, price, image } = product
-                    return (
-                        <ProductCard key={id} id={id} name={name} category={category} price={price} image={image} productClass={productClass} />
-                    )
-                })}
-            </div>
+
+            <SliderContent products={products}/>
+
         </section>
 
         <section id="cara-pemesanan" className="content-section">
@@ -154,10 +149,12 @@ export default function Home({data}) {
 }
 
 export async function getServerSideProps(){
-    const resData = await fetch("http://localhost:3000/api/products");
-    const product = await resData.json();
+    const resData = await fetch("https://easylens.vercel.app/api/products");
+    const products = await resData.json();
 
     return {
-        props : product
+        props : {
+            products,
+        }
     }
 }

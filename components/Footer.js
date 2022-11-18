@@ -9,10 +9,10 @@ const Footer = () => {
                 </p>
             </div>
             <ul className="footer__center">
-                <li><a href="#beranda" className="footer__link">Beranda</a></li>
-                <li><a href="#layanan" className="footer__link">Layanan</a></li>
-                <li><a href="#produk" className="footer__link">Produk & Jasa</a></li>
-                <li><a href="#cara-pemesanan" className="footer__link">Cara Pemesanan</a></li>
+                <li><a href="/#beranda" className="footer__link">Beranda</a></li>
+                <li><a href="/#layanan" className="footer__link">Layanan</a></li>
+                <li><a href="/#produk" className="footer__link">Produk & Jasa</a></li>
+                <li><a href="/#cara-pemesanan" className="footer__link">Cara Pemesanan</a></li>
             </ul>
     
             <div className="footer__right">

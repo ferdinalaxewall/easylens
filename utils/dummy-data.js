@@ -690,6 +690,10 @@ export const getAllProducts = () => {
 }
 
 export const getProductById = (id) => {
-    const product = cameraData.filter((data) => data.id == id);
-    return product
+    const product = cameraData.find(data => data.id == id);
+    if (!product) {
+        return null
+    } else {
+        return product       
+    }
 }
