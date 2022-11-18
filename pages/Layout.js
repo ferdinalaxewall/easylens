@@ -1,8 +1,18 @@
 import Head from "next/head"
 import Footer from "../components/Footer"
+import Loader from "../components/Loader"
 import Navbar from "../components/Navbar"
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Layout = ({children, footer = true}) => {
+
+  useEffect(() => {
+      AOS.init({
+        once : true
+      });
+  })
   return (
     <>
         <Head>
@@ -13,6 +23,8 @@ const Layout = ({children, footer = true}) => {
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link href="https://fonts.googleapis.com/css2?family=Passion+One&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         </Head>
+
+        <Loader />
 
         <Navbar />
 

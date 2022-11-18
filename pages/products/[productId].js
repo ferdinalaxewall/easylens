@@ -22,7 +22,6 @@ export const getStaticPaths = async () => {
         }
     }));
 
-
     return {
         paths,
         fallback : 'blocking'
@@ -43,7 +42,8 @@ export async function getStaticProps({ params }){
     return {
         props : {
             product,
-        }
+        },
+        revalidate : 30,
     }
 }
 

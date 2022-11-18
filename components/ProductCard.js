@@ -5,7 +5,7 @@ function ProductCard({ id, name, category, price, image, productClass}) {
     const { lite, medium, large } = price;
     const priceNumberFormat = lite !== '' ? NumberFormat(lite) : NumberFormat(medium)
   return (
-    <a href={`/products/${id}`} className={productClass} data-category={category} data-product-show="show" data-scroll="show"> 
+    <a href={`/products/${id}`} data-aos="fade-up" className={productClass} data-category={category} data-product-show="show" data-scroll="show"> 
         <div className="produk__box-image">
             <img src={`/img/produk/${image}`} alt={name} loading="lazy" />
         </div>

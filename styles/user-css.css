@@ -116,6 +116,7 @@ body::-webkit-scrollbar-thumb:hover{
 
 .section-title{
   font-size: var(--fs-nav-title);
+  font-weight: var(--bold);
   color: var(--primary);
   text-align: center;
   margin-bottom: 75px;
@@ -272,6 +273,8 @@ body::-webkit-scrollbar-thumb:hover{
 .beranda__title{
   font-size: var(--fs-hero-title);
   width: 85%;
+  font-weight: var(--bold);
+  line-height: calc(var(--fs-hero-title) + 10px);
 }
 
 #beranda .get-started-button{
@@ -375,6 +378,7 @@ body::-webkit-scrollbar-thumb:hover{
   width: 120px;
   text-align: center;
   font-size: var(--fs-subtitle);
+  font-weight: var(--bold);
 }
 
 .layanan__content{
@@ -429,6 +433,7 @@ body::-webkit-scrollbar-thumb:hover{
   font-size: var(--fs-subtitle);
   text-align: center;
   width: 75%;
+  font-weight: var(--bold);
 }
 
 /* Produk & Jasa Section */
@@ -524,6 +529,7 @@ body::-webkit-scrollbar-thumb:hover{
   background-position: calc(100% - 0.75rem) center !important;
   -moz-appearance:none !important;
   -webkit-appearance: none !important; 
+  font-size: var(--fs-sub-body);
   appearance: none !important;
   padding-right: 2rem !important;
   width: 17.5%;
@@ -751,6 +757,7 @@ body::-webkit-scrollbar-thumb:hover{
 .produk__price{
   color: var(--primary);
   font-size: var(--fs-body);
+  font-weight: var(--bold);
 }
 
 .produk__box-footer{
@@ -855,6 +862,12 @@ body::-webkit-scrollbar-thumb:hover{
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+}
+
+.order__title{
+  font-size: var(--fs-body);
+  line-height: var(--fs-title);
+  font-weight: var(--bold);
 }
 
 .footer{
@@ -997,11 +1010,19 @@ body::-webkit-scrollbar-thumb:hover{
 }
 
 .detail-produk__title{
+  font-size: var(--fs-nav-title);
   margin-bottom: 15px;
+  font-weight: var(--bold);
+  line-height: calc(var(--fs-nav-title) + 10px);
 }
 
 .detail-produk__text h3{
   margin-bottom: 5px;
+}
+
+.variant__title{
+  font-weight: var(--semibold);
+  font-size: var(--fs-subtitle);
 }
 
 .variant__button-group{
@@ -1038,6 +1059,17 @@ body::-webkit-scrollbar-thumb:hover{
   width: 100%;
 }
 
+.price__title{
+  font-size: var(--fs-subtitle);
+  font-weight: var(--semibold);
+}
+
+.price__number{
+  font-weight: var(--bold);
+  font-size: var(--fs-nav-title);
+  line-height: var(--fs-nav-title);
+}
+
 .book-produk{
   margin-top: 10px;
   background-color: var(--primary);
@@ -1067,7 +1099,13 @@ body::-webkit-scrollbar-thumb:hover{
 }
 
 .sub-main__title{
+  font-size: var(--fs-nav-title);
+  font-weight: var(--bold);
   color: var(--primary);
+}
+
+.sub-main__desc{
+  font-weight: var(--regular);
 }
 
 @keyframes rotate {
@@ -1166,6 +1204,14 @@ to {
       -ms-transform:translate(-50%, -50%) rotate(360deg);
       -o-transform:translate(-50%, -50%) rotate(360deg);
 }
+}
+
+#galeri-page{
+  padding-top: 105px;
+}
+
+#galeri-page .section-title{
+  margin-bottom: 45px;
 }
 
 #galeri{
@@ -1370,11 +1416,11 @@ to {
       border-radius: 15px 0 0 15px;
       flex-direction: column;
       gap: 30px;
-      transition: all .3s linear;
-      -webkit-transition: all .3s linear;
-      -moz-transition: all .3s linear;
-      -ms-transition: all .3s linear;
-      -o-transition: all .3s linear;
+      transition: all .15s linear;
+      -webkit-transition: all .15s linear;
+      -moz-transition: all .15s linear;
+      -ms-transition: all .15s linear;
+      -o-transition: all .15s linear;
       -webkit-border-radius: 15px 0 0 15px;
       -moz-border-radius: 15px 0 0 15px;
       -ms-border-radius: 15px 0 0 15px;
