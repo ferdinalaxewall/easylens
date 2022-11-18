@@ -5,6 +5,10 @@ import Layout from './Layout'
 export default function Home({products}) {
     const router = useRouter();
     const productClass = router.pathname === '/' && "produk__box"
+
+    const openLightBox = (box) => {
+        console.log(box.cloneNode())
+    }
   return (
     <Layout>
         <section id="beranda" className="content-section">
@@ -111,34 +115,34 @@ export default function Home({products}) {
         <section className="content-section" id="galeri">
             <h1 className="section-title" data-scroll="show">Galeri</h1>
             <div className="galeri__content">
-                <div className="galeri__box">
+                <div className="galeri__box" onClick={(e) => openLightBox(e.target)}>
                     <img src="/img/testimoni/foto-produk-1.jpg" alt="Foto Produk 1" loading="lazy" data-scroll="show" />
                 </div>
-                <div className="galeri__box">
+                <div className="galeri__box" onClick={(e) => openLightBox(e.target)}>
                     <img src="/img/testimoni/foto-produk-2.jpg" alt="Foto Produk 2" loading="lazy" data-scroll="show" />
                 </div>
-                <div className="galeri__box">
+                <div className="galeri__box" onClick={(e) => openLightBox(e.target)}>
                     <img src="/img/testimoni/foto-produk-3.jpg" alt="Foto Produk 3" loading="lazy" data-scroll="show" />
                 </div>
-                <div className="galeri__box">
+                <div className="galeri__box" onClick={(e) => openLightBox(e.target)}>
                     <img src="/img/testimoni/foto-produk-4.jpg" alt="Foto Produk 4" loading="lazy" data-scroll="show" />
                 </div>
-                <div className="galeri__box">
+                <div className="galeri__box" onClick={(e) => openLightBox(e.target)}>
                     <img src="/img/testimoni/foto-produk-5.jpg" alt="Foto Produk 5" loading="lazy" data-scroll="show" />
                 </div>
-                <div className="galeri__box">
+                <div className="galeri__box" onClick={(e) => openLightBox(e.target)}>
                     <img src="/img/testimoni/foto-produk-6.jpg" alt="Foto Produk 6" loading="lazy" data-scroll="show" />
                 </div>
-                <div className="galeri__box">
+                <div className="galeri__box" onClick={(e) => openLightBox(e.target)}>
                     <img src="/img/testimoni/foto-produk-7.jpg" alt="Foto Produk 7" loading="lazy" data-scroll="show" />
                 </div>
-                <div className="galeri__box">
+                <div className="galeri__box" onClick={(e) => openLightBox(e.target)}>
                     <img src="/img/testimoni/foto-produk-8.jpg" alt="Foto Produk 8" loading="lazy" data-scroll="show" />
                 </div>
-                <div className="galeri__box">
+                <div className="galeri__box" onClick={(e) => openLightBox(e.target)}>
                     <img src="/img/testimoni/foto-produk-9.jpg" alt="Foto Produk 9" loading="lazy" data-scroll="show" />
                 </div>
-                <div className="galeri__box">
+                <div className="galeri__box" onClick={(e) => openLightBox(e.target)}>
                     <img src="/img/testimoni/foto-produk-10.jpg" alt="Foto Produk 10" loading="lazy" data-scroll="show" />
                 </div>
             </div>
