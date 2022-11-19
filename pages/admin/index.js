@@ -4,7 +4,7 @@ import Link from "next/link"
 
 const LoginPage = () => {
   return (
-    <AdminLayout>
+    <AdminLayout forLoginPage={true}>
       <section className="w-full px-2 grid place-items-center h-full" id="login-section">
         <div className="w-full md:w-1/3 bg-white shadow-lg p-10 rounded-2xl font-sans flex flex-col space-y-4">
           <div className="flex flex-col items-center text-center mb-2">
