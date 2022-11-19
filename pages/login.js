@@ -1,6 +1,6 @@
-import AdminLayout from "./Layout"
 import { FaRegUserCircle, FaLock } from "react-icons/fa"
 import Link from "next/link"
+import AdminLayout from "./admin/Layout"
 
 const LoginPage = () => {
   return (
@@ -26,7 +26,7 @@ const LoginPage = () => {
               <label className="text-xl absolute top-1/2 left-5 peer-focus:text-primary text-gray-500 -translate-y-1/2 transition-colors duration-150 ease-in"><FaLock /></label>
             </div>
             <button className="bg-primary text-white rounded-md py-2 px-3 mb-3">Login</button>
-              <Link href={"/admin/register"} className="text-primary hover:text-primary visited:text-primary text-sm underline hover:no-underline cursor-pointer font-bold">Didn't have any account? Register here!</Link>
+              <Link href={"./register"} className="text-primary hover:text-primary visited:text-primary text-sm underline hover:no-underline cursor-pointer font-bold">Didn't have any account? Register here!</Link>
           </div>
         </div>
       </section>

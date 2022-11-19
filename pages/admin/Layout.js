@@ -4,7 +4,7 @@ const AdminLayout = ({children}) => {
   return (
     <div>
         <Head>
-            <title>EasyLens - Admin</title>
+            <title>EasyLens</title>
             <meta name="description" content="Sewa Kamera daerah Bogor dan Sekitarnya" />
             <link rel="icon" href="/icon/logo.svg" />
         </Head>

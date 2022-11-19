@@ -42,7 +42,7 @@ export default function Home({products}) {
                         EasyLens hadir untuk mempermudah proses pelayanan dan pendataan dalam pemesanan suatu produk, atau jasa. Tunggu apalagi ayo gabung bersama kami!
                     </p>
 
-                    <a href="#" className="get-started-button" data-scroll="show">
+                    <a href="/register" className="get-started-button" data-scroll="show">
                         Mulai Sekarang 
                         <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 15H25M16.25 6.25L25 15L16.25 23.75" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeinejoin="round"/>

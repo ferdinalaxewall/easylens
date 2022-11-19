@@ -22,7 +22,7 @@ const Navbar = () => {
 
             <div className={`navbar-overlay ${isNavbarOpen ? "show" : ""}`}></div>
 
-            <a href="#" className="get-started-button">
+            <a href="./register" className="get-started-button">
                 Mulai Sekarang 
                 <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 15H25M16.25 6.25L25 15L16.25 23.75" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
