@@ -2,10 +2,24 @@ import { useEffect, useState } from "react"
 import { BiEditAlt, BiInfoCircle, BiTrashAlt } from "react-icons/bi"
 import AdminLayout from "../Layout"
 import axios from "axios"
+import { useRouter } from "next/router"
 
 function AdminProducts({products}) {
+    const [isRefreshing, setIsRefreshing] = useState(false)
+    const router = useRouter();
+    const deleteProductById = async (id) => {
+        await axios.delete(`http://127.0.0.1:8000/api/products/${id}`);
+        refreshData();
+    }
 
-    console.log(products)
+    const refreshData = () => {
+        router.replace(router.asPath);
+        setIsRefreshing(true);
+      };
+      useEffect(() => {
+        setIsRefreshing(false);
+      }, [products]);
+
   return (
     <AdminLayout pageTitle="Data Produk" urlButton="/admin/products/add">
         <div className="overflow-x-auto shadow-md rounded">
@@ -21,25 +35,27 @@ function AdminProducts({products}) {
                     </tr>
                 </thead>
                 <tbody className="[&>*:nth-child(odd)]:bg-white [&>*:nth-child(even)]:bg-stone-100">
-                    <tr>
-                        <td className="py-3 px-6">No</td>
-                        <td className="py-3 px-6">Nama Penyewa</td>
-                        <th scope="col" className="py-3 px-6 font-medium text-gray-900 whitespace-nowrap">Produk</th>
-                        <td className="py-3 px-6">Status</td>
-                        <td className="py-3 px-6 text-center">
-                            <button className="text-sky-800">
-                                <BiInfoCircle className="text-xl mr-2" /> <span className="hidden lg:block">Lihat Harga</span>
-                            </button>
-                        </td>
-                        <td className="py-3 px-6 text-white text-xl flex flex-wrap justify-center gap-1">
-                            <a className="hover:text-white visited:text-white bg-green-600 p-1 rounded" href="/admin/products/edit">
-                                <BiEditAlt />
-                            </a>
-                            <button className=" bg-red-600 p-1 rounded">
-                                <BiTrashAlt />
-                            </button>
-                        </td>
-                    </tr>
+                    {products.map((product, index) => (
+                        <tr key={product.id}>
+                            <td className="py-3 px-6">{index+1}</td>
+                            <th scope="col" className="py-3 px-6 font-medium text-gray-900 whitespace-nowrap">{product.name}</th>
+                            <td className="py-3 px-6">{product.category}</td>
+                            <td className="py-3 px-6">{product.description}</td>
+                            <td className="py-3 px-6 text-center">
+                                <button className="text-sky-800">
+                                    <BiInfoCircle className="text-xl mr-2" /> <span className="hidden lg:block">Lihat Harga</span>
+                                </button>
+                            </td>
+                            <td className="py-3 px-6 text-white text-xl flex flex-wrap justify-center gap-1">
+                                <a className="hover:text-white visited:text-white bg-green-600 p-1 rounded" href={`/admin/products/edit/${product.id}`}>
+                                    <BiEditAlt />
+                                </a>
+                                <button className=" bg-red-600 p-1 rounded" onClick={() => deleteProductById(product.id)}>
+                                    <BiTrashAlt />
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

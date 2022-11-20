@@ -1,10 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { BiSave } from "react-icons/bi"
-import AdminLayout from "../Layout"
+import AdminLayout from "../../Layout"
 import axios from "axios"
 import { useRouter } from "next/router";
 
-function AddProducts() {
+function UpdateProducts({product}) {
     const [name, setName] = useState("");
     const [category, setCategory] = useState("");
     const [description, setDescription] = useState("");
@@ -12,14 +12,28 @@ function AddProducts() {
     const [medium, setMedium] = useState("");
     const [large, setLarge] = useState("");
     const [file, setFile] = useState("");
+    const [preview, setPreview] = useState("")
     const router = useRouter();
+    
+    const {name : getName, category : getCategory, description : getDescription, lite : getLite, medium : getMedium, large : getLarge, image : getImage} = product[0];
+    const previewUrl = `http://127.0.0.1:8000/product-images/${getImage}`;
+
+    useEffect(() => {
+        setName(getName);
+        setCategory(getCategory);
+        setDescription(getDescription);
+        setLite(getLite);
+        setMedium(getMedium);
+        setLarge(getLarge);
+        setPreview(previewUrl);
+    }, [router.query.productId])
 
     const loadImage = (e) => {
         const image = e.target.files[0];
         setFile(image)
     }
 
-    const saveProduct = async (e) => {
+    const updateProduct = async (e) => {
         e.preventDefault();
         
         const formData = new FormData();
@@ -30,9 +44,10 @@ function AddProducts() {
         formData.append("medium", medium);
         formData.append("large", large);
         formData.append("file", file);
+        file !== "" && formData.append("file", file);
 
         try {
-            await axios.post("http://127.0.0.1:8000/api/products", formData)
+            const response = await axios.post(`http://127.0.0.1:8000/api/products/${router.query.productId}`, formData)
             router.push("/admin/products")
         } catch (error) {
             console.log(error)
@@ -40,9 +55,9 @@ function AddProducts() {
     }
 
   return (
-    <AdminLayout pageTitle="Tambah Produk" withButton={false}>
+    <AdminLayout pageTitle="Ubah Produk" withButton={false}>
         <div className="overflow-x-auto rounded">
-            <form onSubmit={saveProduct}>
+            <form onSubmit={updateProduct}>
                 <div className="mb-3 flex flex-col-reverse gap-1">
                     <input type="text" className="px-4 py-2 shadow rounded bg-gray-50 focus:outline-none border border-white border-b-sky-800 focus:border-sky-800 focus:border transition duration-200 ease-in" value={name} onChange={(e) => setName(e.target.value)} placeholder="Contoh: Kamera Canon EOS 70D" required />
                     <label className="font-medium">Nama Produk</label>
@@ -77,7 +92,8 @@ function AddProducts() {
                     <label className="font-medium">Harga 24 Jam</label>
                 </div>
                 <div className="mb-5 flex flex-col-reverse gap-1">
-                    <input type="file" className="" onChange={loadImage} placeholder="Contoh: 120,000" required />
+                    <input type="file" className="" onChange={loadImage} placeholder="Contoh: 120,000" />
+                    <img className="w-44 mb-3 mt-1" src={preview} alt="" />
                     <label className="font-medium">Upload Gambar</label>
                 </div>
                 <button type="submit" className="mx-auto bg-sky-800 text-white px-5 py-2 rounded font-semibold text-sm md:text-base flex items-center gap-3">
@@ -89,4 +105,34 @@ function AddProducts() {
   )
 }
 
-export default AddProducts
+export default UpdateProducts
+
+
+export const getStaticPaths = async () => {
+    const {data : products} = await axios.get(`http://127.0.0.1:8000/api/products`)
+    const paths = products.map(product => ({
+        params : {
+            productId : `${product.id}`
+        }
+    }));
+
+    return {
+        paths,
+        fallback : 'blocking'
+    }
+}
+
+export const getStaticProps = async ({params}) => {
+    const {data : product} = await axios.get(`http://127.0.0.1:8000/api/products/${params.productId}`)
+    if(!product.length){
+        return {
+            notFound : true
+        }
+    }
+
+    return {
+        props : {
+            product,
+        }
+    }
+}

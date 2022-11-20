@@ -1,8 +1,8 @@
+import axios from "axios";
 import { useState } from "react"
-import { BiChevronDown, BiLogOut, BiMenuAltLeft, BiUser } from "react-icons/bi"
+import { BiChevronDown, BiLogOut, BiMenuAltLeft, BiUser, BiUserCircle } from "react-icons/bi"
 
-function Navbar({setIsSidebarOpen, isSidebarOpen}) {
-    const [isProfileOpen, setIsProfileOpen] = useState(false);
+function Navbar({setIsSidebarOpen, isSidebarOpen, setIsProfileOpen, isProfileOpen}) {
     const handleProfile = () => {
         setIsProfileOpen(!isProfileOpen)
     }
@@ -11,7 +11,7 @@ function Navbar({setIsSidebarOpen, isSidebarOpen}) {
     }
 
     return (
-    <nav className={`fixed w-full bg-white top-0 left-0 z-10 ${isSidebarOpen ? "pl-2 lg:pl-60" : "pl-16 lg:pl-16"} sm:pl-16 pr-8 font-sans flex items-center justify-between py-2 transition-all duration-150 ease-in`}>
+    <nav className={`fixed w-full bg-white top-0 left-0 z-10 ${isSidebarOpen ? "pl-2 lg:pl-60" : "pl-16 lg:pl-16"} shadow-lg sm:pl-16 pr-8 font-sans flex items-center justify-between py-2 transition-all duration-150 ease-in`}>
         <div className={`flex items-center ml-5 ${isSidebarOpen ? "lg:ml-2" : "lg:ml-5" } transition-all duration-150 ease-in`}>
             <button className="text-3xl" onClick={() => handleSidebar()}>
                 <BiMenuAltLeft />
@@ -20,7 +20,7 @@ function Navbar({setIsSidebarOpen, isSidebarOpen}) {
         <ul>
             <li className="relative">
                 <button className="flex items-center gap-3 py-2 rounded" onClick={() => handleProfile()}>
-                    <img className="w-8 object-cover object-center rounded-full" src="/img/testimoni/foto-produk-1.jpg" alt="EasyLens Logo" />
+                    <BiUserCircle className="text-2xl text-sky-800" />
                     <span className="font-medium text-sm mr-2">Muhamad Ferdinal</span>
                     <BiChevronDown className={`text-xl transition-transform duration-150 ease-in ${ isProfileOpen && "-rotate-180"}`} />
                 </button>

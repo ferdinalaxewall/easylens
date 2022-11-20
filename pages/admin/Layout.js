@@ -7,9 +7,10 @@ import axios from "axios"
 
 const AdminLayout = ({children, pageTitle, withBackground = true, forLoginPage = false, withButton = true, urlButton = "" }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   
   return (
-    <div>
+    <div onClick={() => isProfileOpen && setIsProfileOpen(false)}>
         <Head>
             <title>EasyLens</title>
             <meta name="description" content="Sewa Kamera daerah Bogor dan Sekitarnya" />
@@ -19,7 +20,7 @@ const AdminLayout = ({children, pageTitle, withBackground = true, forLoginPage =
         { !forLoginPage && (
           <>
             <Sidebar isSidebarOpen={isSidebarOpen} />
-            <Navbar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+            <Navbar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} isProfileOpen={isProfileOpen} setIsProfileOpen={setIsProfileOpen} />
           </>
         )}
         
