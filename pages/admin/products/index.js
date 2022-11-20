@@ -1,7 +1,11 @@
+import { useEffect, useState } from "react"
 import { BiEditAlt, BiInfoCircle, BiTrashAlt } from "react-icons/bi"
 import AdminLayout from "../Layout"
+import axios from "axios"
 
-function AdminProducts() {
+function AdminProducts({products}) {
+
+    console.log(products)
   return (
     <AdminLayout pageTitle="Data Produk" urlButton="/admin/products/add">
         <div className="overflow-x-auto shadow-md rounded">
@@ -28,7 +32,7 @@ function AdminProducts() {
                             </button>
                         </td>
                         <td className="py-3 px-6 text-white text-xl flex flex-wrap justify-center gap-1">
-                            <a className="hover:text-white visited:text-white bg-green-600 p-1 rounded" href="/admin/transaction/edit">
+                            <a className="hover:text-white visited:text-white bg-green-600 p-1 rounded" href="/admin/products/edit">
                                 <BiEditAlt />
                             </a>
                             <button className=" bg-red-600 p-1 rounded">
@@ -44,3 +48,13 @@ function AdminProducts() {
 }
 
 export default AdminProducts
+
+export async function getServerSideProps(){
+    const { data : products} = await axios.get("http://127.0.0.1:8000/api/products");
+
+    return {
+        props : {
+            products,
+        }
+    }
+}

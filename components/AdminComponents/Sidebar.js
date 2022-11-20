@@ -41,7 +41,7 @@ function Sidebar({isSidebarOpen}) {
             </ul>
         </div>
         <div>
-            <a href="" className="w-full flex items-center font-semibold hover:bg-sky-900 hover:opacity-100 rounded hover:text-white visited:text-white px-2 py-2 lg:py-2 justify-start gap-3">
+            <a href="" className={`w-full flex items-center font-semibold hover:bg-sky-900 hover:opacity-100 rounded hover:text-white visited:text-white px-2 ${isSidebarOpen ? "lg:px-3 lg:justify-start" : "justify-center"} py-2 lg:py-2 gap-3`}>
                 <BiLogOut className={`text-2xl ${isSidebarOpen && "lg:text-xl"}`} />
                 <span className={`hidden ${isSidebarOpen && "lg:block"}`}>Logout</span>
             </a>
