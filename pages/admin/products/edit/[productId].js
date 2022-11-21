@@ -15,7 +15,7 @@ function UpdateProducts({product}) {
     const [preview, setPreview] = useState("")
     const router = useRouter();
     
-    const {name : getName, category : getCategory, description : getDescription, lite : getLite, medium : getMedium, large : getLarge, image : getImage} = product[0];
+    const {name : getName, category : getCategory, description : getDescription, lite : getLite, medium : getMedium, large : getLarge, image : getImage} = product;
     const previewUrl = `http://127.0.0.1:8000/product-images/${getImage}`;
 
     useEffect(() => {
@@ -47,7 +47,7 @@ function UpdateProducts({product}) {
         file !== "" && formData.append("file", file);
 
         try {
-            const response = await axios.post(`http://127.0.0.1:8000/api/products/${router.query.productId}`, formData)
+            await axios.post(`http://127.0.0.1:8000/api/products/${router.query.productId}`, formData)
             router.push("/admin/products")
         } catch (error) {
             console.log(error)
@@ -124,7 +124,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({params}) => {
     const {data : product} = await axios.get(`http://127.0.0.1:8000/api/products/${params.productId}`)
-    if(!product.length){
+    if(product && Object.keys(product).length === 0){
         return {
             notFound : true
         }

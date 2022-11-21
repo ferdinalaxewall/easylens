@@ -35,7 +35,11 @@ function AdminProducts({products}) {
                     </tr>
                 </thead>
                 <tbody className="[&>*:nth-child(odd)]:bg-white [&>*:nth-child(even)]:bg-stone-100">
-                    {products.map((product, index) => (
+                    {!products.length ? (
+                        <tr>
+                            <th scope="col" colSpan={6} className="py-3 px-6 font-medium text-gray-900 whitespace-nowrap text-center">Tidak ada data produk</th>
+                        </tr>
+                    ) : products.map((product, index) => (
                         <tr key={product.id}>
                             <td className="py-3 px-6">{index+1}</td>
                             <th scope="col" className="py-3 px-6 font-medium text-gray-900 whitespace-nowrap">{product.name}</th>
