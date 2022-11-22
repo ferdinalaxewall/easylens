@@ -34,7 +34,7 @@ function UpdateUsers({user}) {
         }
 
         try {
-            await axios.post(`http://127.0.0.1:8000/api/users/${router.query.userId}`, data)
+            await axios.post(`https://ferdinalapi.000webhostapp.com/api/users/${router.query.userId}`, data)
             router.push("/admin/users")
         } catch (error) {
             console.log(error)
@@ -82,7 +82,7 @@ export default UpdateUsers
 
 
 export const getStaticPaths = async () => {
-    const {data : users} = await axios.get(`http://127.0.0.1:8000/api/users`)
+    const {data : users} = await axios.get(`https://ferdinalapi.000webhostapp.com/api/users`)
     const paths = users.map(user => ({
         params : {
             userId : `${user.id}`
@@ -96,7 +96,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({params}) => {
-    const {data : user} = await axios.get(`http://127.0.0.1:8000/api/users/${params.userId}`)
+    const {data : user} = await axios.get(`https://ferdinalapi.000webhostapp.com/api/users/${params.userId}`)
     if(user && Object.keys(user).length === 0){
         return {
             notFound : true

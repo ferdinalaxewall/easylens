@@ -8,7 +8,7 @@ function Transactions({transactions}) {
     const [isRefreshing, setIsRefreshing] = useState(false)
     const router = useRouter();
     const deleteTransactionById = async (id) => {
-        await axios.delete(`http://127.0.0.1:8000/api/transactions/${id}`);
+        await axios.delete(`https://ferdinalapi.000webhostapp.com/api/transactions/${id}`);
         refreshData();
     }
     
@@ -52,9 +52,9 @@ function Transactions({transactions}) {
                                 <a className="hover:text-white visited:text-white bg-green-600 p-1 rounded" href={`/admin/transactions/edit/${transaction.id}`}>
                                     <BiEditAlt />
                                 </a>
-                                <button className=" bg-red-600 p-1 rounded" onClick={() => deleteTransactionById(transaction.id)}>
+                                {/* <button className=" bg-red-600 p-1 rounded" onClick={() => deleteTransactionById(transaction.id)}>
                                     <BiTrashAlt />
-                                </button>
+                                </button> */}
                             </td>
                         </tr>
                     ))}
@@ -68,7 +68,8 @@ function Transactions({transactions}) {
 export default Transactions
 
 export async function getServerSideProps(){
-    const { data : res} = await axios.get("http://127.0.0.1:8000/api/transactions");
+    const { data : res} = await axios.get("https://ferdinalapi.000webhostapp.com/api/transactions");
+    console.log(res)
     const transactions = res.map(resData => ({
         id : resData.id,
         created_at : new Date(resData.created_at).toLocaleString(),

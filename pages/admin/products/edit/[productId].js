@@ -16,7 +16,7 @@ function UpdateProducts({product}) {
     const router = useRouter();
     
     const {name : getName, category : getCategory, description : getDescription, lite : getLite, medium : getMedium, large : getLarge, image : getImage} = product;
-    const previewUrl = `http://127.0.0.1:8000/product-images/${getImage}`;
+    const previewUrl = `https://ferdinalapi.000webhostapp.com/storage/product-images/${getImage}`;
 
     useEffect(() => {
         setName(getName);
@@ -47,7 +47,7 @@ function UpdateProducts({product}) {
         file !== "" && formData.append("file", file);
 
         try {
-            await axios.post(`http://127.0.0.1:8000/api/products/${router.query.productId}`, formData)
+            await axios.post(`https://ferdinalapi.000webhostapp.com/api/products/${router.query.productId}`, formData)
             router.push("/admin/products")
         } catch (error) {
             console.log(error)
@@ -109,7 +109,7 @@ export default UpdateProducts
 
 
 export const getStaticPaths = async () => {
-    const {data : products} = await axios.get(`http://127.0.0.1:8000/api/products`)
+    const {data : products} = await axios.get(`https://ferdinalapi.000webhostapp.com/api/products`)
     const paths = products.map(product => ({
         params : {
             productId : `${product.id}`
@@ -123,7 +123,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({params}) => {
-    const {data : product} = await axios.get(`http://127.0.0.1:8000/api/products/${params.productId}`)
+    const {data : product} = await axios.get(`https://ferdinalapi.000webhostapp.com/api/products/${params.productId}`)
     if(product && Object.keys(product).length === 0){
         return {
             notFound : true

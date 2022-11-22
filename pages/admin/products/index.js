@@ -8,7 +8,7 @@ function AdminProducts({products}) {
     const [isRefreshing, setIsRefreshing] = useState(false)
     const router = useRouter();
     const deleteProductById = async (id) => {
-        await axios.delete(`http://127.0.0.1:8000/api/products/${id}`);
+        await axios.delete(`https://ferdinalapi.000webhostapp.com/api/products/${id}`);
         refreshData();
     }
 
@@ -54,9 +54,9 @@ function AdminProducts({products}) {
                                 <a className="hover:text-white visited:text-white bg-green-600 p-1 rounded" href={`/admin/products/edit/${product.id}`}>
                                     <BiEditAlt />
                                 </a>
-                                <button className=" bg-red-600 p-1 rounded" onClick={() => deleteProductById(product.id)}>
+                                {/* <button className=" bg-red-600 p-1 rounded" onClick={() => deleteProductById(product.id)}>
                                     <BiTrashAlt />
-                                </button>
+                                </button> */}
                             </td>
                         </tr>
                     ))}
@@ -70,7 +70,7 @@ function AdminProducts({products}) {
 export default AdminProducts
 
 export async function getServerSideProps(){
-    const { data : products} = await axios.get("http://127.0.0.1:8000/api/products");
+    const { data : products} = await axios.get("https://ferdinalapi.000webhostapp.com/api/products");
 
     return {
         props : {

@@ -29,7 +29,7 @@ function AddTransaction({products}) {
         }
 
         try {
-            await axios.post("http://127.0.0.1:8000/api/transactions", data)
+            await axios.post("https://ferdinalapi.000webhostapp.com/api/transactions", data)
             router.push("/admin/transactions")
         } catch (error) {
             console.log(error)
@@ -91,7 +91,7 @@ function AddTransaction({products}) {
 export default AddTransaction
 
 export async function getServerSideProps(){
-    const { data : products} = await axios.get("http://127.0.0.1:8000/api/products");
+    const { data : products} = await axios.get("https://ferdinalapi.000webhostapp.com/api/products");
     
     return {
         props : {

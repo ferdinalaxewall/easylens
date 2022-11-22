@@ -8,7 +8,7 @@ function Transactions({users}) {
     const [isRefreshing, setIsRefreshing] = useState(false)
     const router = useRouter();
     const deleteUsersById = async (id) => {
-        await axios.delete(`http://127.0.0.1:8000/api/users/${id}`);
+        await axios.delete(`https://ferdinalapi.000webhostapp.com/api/users/${id}`);
         refreshData();
     }
 
@@ -49,9 +49,9 @@ function Transactions({users}) {
                                 <a className="hover:text-white visited:text-white bg-green-600 p-1 rounded" href={`/admin/users/edit/${user.id}`}>
                                     <BiEditAlt />
                                 </a>
-                                <button className=" bg-red-600 p-1 rounded" onClick={() => deleteUsersById(user.id)}>
+                                {/* <button className=" bg-red-600 p-1 rounded" onClick={() => deleteUsersById(user.id)}>
                                     <BiTrashAlt />
-                                </button>
+                                </button> */}
                             </td>
                         </tr>
                     ))}
@@ -65,7 +65,7 @@ function Transactions({users}) {
 export default Transactions
 
 export async function getServerSideProps(){
-    const { data : users} = await axios.get("http://127.0.0.1:8000/api/users");
+    const { data : users} = await axios.get("https://ferdinalapi.000webhostapp.com/api/users");
 
     return {
         props : {

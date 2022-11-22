@@ -7,7 +7,7 @@ function ProductCard({ id, name, category, price, image, productClass}) {
   return (
     <a href={`/products/${id}`} data-aos="fade-up" className={productClass} data-category={category} data-product-show="show" data-scroll="show"> 
         <div className="produk__box-image">
-            <img src={`/img/produk/${image}`} alt={name} loading="lazy" />
+            <img src={`https://ferdinalapi.000webhostapp.com/storage/product-images/${image}`} alt={name} loading="lazy" />
         </div>
         <div className="produk__box-body">
             <h3 className="produk__title">{name}</h3>

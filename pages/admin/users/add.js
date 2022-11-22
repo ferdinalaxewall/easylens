@@ -24,7 +24,7 @@ function AddUsers() {
         }
 
         try {
-            await axios.post("http://127.0.0.1:8000/api/users", data)
+            await axios.post("https://ferdinalapi.000webhostapp.com/api/users", data)
             router.push("/admin/users")
         } catch (error) {
             console.log(error)

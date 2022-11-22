@@ -32,7 +32,7 @@ function AddProducts() {
         formData.append("file", file);
 
         try {
-            await axios.post("http://127.0.0.1:8000/api/products", formData)
+            await axios.post("https://ferdinalapi.000webhostapp.com/api/products", formData)
             router.push("/admin/products")
         } catch (error) {
             console.log(error)

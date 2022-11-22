@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import ProductCard from '../../components/ProductCard';
@@ -49,8 +50,7 @@ function ProductsPage({products}) {
 }
 
 export async function getServerSideProps(){
-  const resData = await fetch("http://easylens.vercel.app/api/products");
-  const products = await resData.json();
+  const {data : products} = await axios("https://ferdinalapi.000webhostapp.com/api/products");
 
   return {
       props : {

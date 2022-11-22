@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import NumberFormat from '../utils/number-format'
 
-function DetailProduct({name, image, description, prices}) {
+function DetailProduct({name, image, description, lite, medium, large}) {
     const [selectPrice, setSelectPrice] = useState("");
     const [variant, setVariant] = useState("");
+    lite = (lite !== null || lite !== "") ? NumberFormat(lite) : lite 
+    medium = (medium !== null || medium !== "") ? NumberFormat(medium) : medium 
+    large = (large !== null || large !== "") ? NumberFormat(large) : large 
+
     const handleSelectButton = (button) => {
         let allButton = document.querySelectorAll(".button-variant")
         allButton.forEach(item => item.classList.remove("selected"))
@@ -13,7 +17,6 @@ function DetailProduct({name, image, description, prices}) {
     }
     const orderWhatsapp = () => {
         const messageString = `Halo Admin EasyLens, Saya ingin memesan *${name}* selama *${variant} Jam*. Harga yang tercantum di Website EasyLens adalah *Rp. ${selectPrice}*`;
-        console.log(messageString);
         const message = encodeURI(messageString);
         const url = `https://wa.me/6283861527757?text=${message}`
         open(url, "_blank")
@@ -35,18 +38,21 @@ function DetailProduct({name, image, description, prices}) {
                         <h1 className="detail-produk__title">{name}</h1>
                         <h3 className="variant__title">Pilih Lama Peminjaman:</h3>
                         <div className="variant__button-group">
-                            {
-                                Object.entries(prices).map((price, index) => {
-                                    const [ priceName, priceNumber ] = price;
-                                    const time = priceName === "lite" ? "6 Jam" : (priceName === "medium" ? "12 Jam" : "24 Jam")
-                                    const priceNumberFormat = NumberFormat(priceNumber)
-                                    if(priceNumberFormat !== "") return (
-                                            <button key={index} className="button-variant" variant-value="12" data-price={priceNumberFormat} onClick={(e) => handleSelectButton(e.target)} >
-                                                {time}
-                                            </button>
-                                        )
-                                })
-                            }
+                            {(lite !== null && lite !== "") && (
+                                    <button className="button-variant" variant-value="6" data-price={lite} onClick={(e) => handleSelectButton(e.target)} >
+                                        6 Jam
+                                    </button>
+                            )}
+                            {(medium !== null && medium !== "") && (
+                                    <button className="button-variant" variant-value="12" data-price={medium} onClick={(e) => handleSelectButton(e.target)} >
+                                        12 Jam
+                                    </button>
+                            )}
+                            {(large !== null && large !== "") && (
+                                    <button className="button-variant" variant-value="24" data-price={large} onClick={(e) => handleSelectButton(e.target)} >
+                                        24 Jam
+                                    </button>
+                            )}
                         </div>
                     </div>
                     <div className="detail-produk__price">
