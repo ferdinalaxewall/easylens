@@ -21,7 +21,7 @@ function Navbar({setIsSidebarOpen, isSidebarOpen, setIsProfileOpen, isProfileOpe
             <li className="relative">
                 <button className="flex items-center gap-3 py-2 rounded" onClick={() => handleProfile()}>
                     <BiUserCircle className="text-2xl text-sky-800" />
-                    <span className="font-medium text-sm mr-2">Muhamad Ferdinal</span>
+                    <span className="font-medium text-sm mr-2">Admin EasyLens</span>
                     <BiChevronDown className={`text-xl transition-transform duration-150 ease-in ${ isProfileOpen && "-rotate-180"}`} />
                 </button>
 

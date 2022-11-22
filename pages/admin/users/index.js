@@ -8,7 +8,7 @@ function Transactions({users}) {
     const [isRefreshing, setIsRefreshing] = useState(false)
     const router = useRouter();
     const deleteUsersById = async (id) => {
-        await axios.delete(`https://ferdinalapi.000webhostapp.com/api/users/${id}`);
+        await axios.post(`https://ferdinalapi.000webhostapp.com/api/users/delete/${id}`);
         refreshData();
     }
 
@@ -49,9 +49,9 @@ function Transactions({users}) {
                                 <a className="hover:text-white visited:text-white bg-green-600 p-1 rounded" href={`/admin/users/edit/${user.id}`}>
                                     <BiEditAlt />
                                 </a>
-                                {/* <button className=" bg-red-600 p-1 rounded" onClick={() => deleteUsersById(user.id)}>
+                                <button className=" bg-red-600 p-1 rounded" onClick={() => deleteUsersById(user.id)}>
                                     <BiTrashAlt />
-                                </button> */}
+                                </button>
                             </td>
                         </tr>
                     ))}

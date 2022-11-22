@@ -2,24 +2,11 @@ import AdminLayout from "./Layout"
 
 function Dashboard() {
   return (
-    <AdminLayout pageTitle="Dashboard" withBackground={false} withButton={false}>
-            <main className="grid grid-cols-4 gap-2">
-                <div className="bg-white p-5 grid place-items-center rounded">
-                    <h1>Kotak-1</h1>
-                </div>
-                <div className="bg-white p-5 grid place-items-center rounded">
-                    <h1>Kotak-1</h1>
-                </div>
-                <div className="bg-white p-5 grid place-items-center rounded">
-                    <h1>Kotak-1</h1>
-                </div>
-                <div className="bg-white p-5 grid place-items-center rounded">
-                    <h1>Kotak-1</h1>
-                </div>
-                <div className="bg-white p-5 grid place-items-center rounded">
-                    <h1>Kotak-1</h1>
-                </div>
-            </main>
+    <AdminLayout pageTitle="Dashboard" withButton={false}>
+        <div className="h-24">
+            
+        <h1 className="text-4xl font-bold">Welcome back, <span className="text-sky-800">Admin EasyLens</span>!</h1>
+        </div>
     </AdminLayout>
   )
 }
