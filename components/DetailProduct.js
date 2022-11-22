@@ -31,7 +31,7 @@ function DetailProduct({name, image, description, lite, medium, large}) {
                 Lihat Semua Produk</a>
             <div className="detail-produk__main">
                 <div className="detail-produk__image" data-aos="zoom-in">
-                    <img src={`/img/produk/${image}`} alt={name} />
+                    <img src={`https://ferdinalapi.000webhostapp.com/storage/product-images/${image}`} alt={name} />
                 </div>
                 <div className="detail-produk__text" data-aos="fade-left">
                     <div className="detail-produk__header">
